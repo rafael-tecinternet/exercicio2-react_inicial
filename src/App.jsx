@@ -17,12 +17,21 @@ function App() {
   }, []);
   return (
     <>
-      <article>
-        {produtos.map(
-          ({ id, titulo, preco }) => (
-            (id = { id }), (titulo = { titulo }), (preco = { preco })
-          )
-        )}
+      <article className="container">
+        {produtos.map(({ id, title, price, image }) => (
+          <div key={id} class="produtos">
+            <p>
+              <img class="foto-produto" src={image} alt="" />
+            </p>
+            <h4>{title}</h4>
+            <p>
+              {price.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </p>
+          </div>
+        ))}
       </article>
     </>
   );
